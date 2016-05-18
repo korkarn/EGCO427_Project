@@ -1,6 +1,5 @@
 <?php 
-	require_once('include\config.php');
-	require_once('include\function.php');
+require_once('include\function.php');
     $mysqli = connectDatabase();
     if(isset($_GET['id']))
     {
@@ -18,69 +17,92 @@
  <html>
  <head>
  	<title>profile</title>
- 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Crafty+Girls" />
-  <link rel="stylesheet" type="text/css" href="//db.onlinewebfonts.com/c/97602e8f20f5e5b76a6bc0c6b977e30e?family=Kite+One" />
-	<link rel="stylesheet" href="include/profile.css">
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">	
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Crafty+Girls" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Allerta+Stencil" />
+    <link rel="stylesheet" type="text/css" href="//db.onlinewebfonts.com/c/97602e8f20f5e5b76a6bc0c6b977e30e?family=Kite+One" />
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">	
 </head>
 
 <body ng-app="myApp" ng-controller="customersCtrl">
- 	<!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron" style="height: 150px"></div>
-      <div class="panel-body" style="margin-top: -120px">
-  			<div>
-          <center><img src="images\users\<?php echo $row["pic"]?>" alt="User Avatar" class="img-circle" width="150" height="150"></center>
-  				<center><h1 class="username"><?php echo $row["username"]?></h1></center>
-  				<center><h2 class="point"><img src="images\coins.png" alt="coin" class="img-circle" width="40" height="40">&nbsp;<?php echo $row["points"]?> points</h2></center><br>
-  				<center><table border="0">
-          <tbody>
-            <tr>
-              <td><h3 class="info">E-MAIL : </h3></td>
-              <td><ul><h3 class="info"><?php echo $row["email"]?></h3></ul></td>
-            </tr>
-            <tr>
-              <td><h3 class="info">TEL : </h3></td>
-              <td><ul><h3 class="info"><?php echo $row["tel"]?></h3></ul></td>
-            </tr>
-            <tr>
-              <td><h3 class="info">ADDRESS : </h3></td>
-              <td><ul><h3 class="info"><?php echo $row["address"]?></h3></ul></td>
-            </tr>
-          </tbody>
-          </table></center>
+    <div class="jumbotron" style="background-color: #FF6138">
+    </div>
+        <div class="top">
+            <div>
+                <center>
+                    <img src="images\users\<?php echo $row["pic"]?>" class="img-circle userpic">
+                </center>
+  				
+                <center>
+                    <h1 class="username"><?php echo $row["username"]?>
+                </center>
+                
+  				<center>
+                    <h1 class="point"><img src="images\coins.png" class="img-circle" width="40" height="40">&nbsp;<?php echo $row["points"]?> points
+                </center><br>
+
+  				<div>
+                    <center>
+                    <button type="button" class="btn btn-primary btnprofile" onclick="location.href='profile.php'">PROFILE</button>
+                    <table>
+                        <tbody class="bordtab">
+                            <tr width=100%>
+                                <td><h1 class="info">E-MAIL : </td>
+                                <td><ul><h1 class="info"><?php echo $row["email"]?></ul></td>
+                            </tr>
+                            <tr width=100%>
+                                <td><h1 class="info">TEL : </td>
+                                <td><ul><h1 class="info"><?php echo $row["tel"]?></ul></td>
+                            </tr>
+                            <tr width=100%>
+                                <td><h1 class="info">ADDRESS : </td>
+                                <td><ul><h1 class="info"><?php echo $row["address"]?></ul></td>
+                            </tr>
+                            <tr width=100%>
+                                <td></td>
+                                <td>
+                                    <input class="img-circle img" type="image" src="images/prev.png" onClick="location.href='include/prev.php?id='+<?php echo $row["id"] ?>">
+                                    <input class="img-circle img" type="image" src="images/next.png" onClick="location.href='include/next.php?id='+<?php echo $row["id"] ?>">                            
+                                    <input class="img-circle img" type="image" src="images/edit.png" onClick="location.href='editprofile.php?id='+<?php echo $row["id"] ?>">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table><br><br>
+                    </center>
+                </div>
+                    
+                <center>
+                <div class="container">
+                    <button type="button" class="btn btn-primary btnprofile" onclick="location.href='profile.php'">PROFILE</button>
+                    <button type="button" class="btn btn-primary btnprofile" onclick="location.href='history.php'">HISTORY</button>
+                </div>
+                </center>
+            </div>
         </div>
-        <br><br><br><br><br>
 
-  		<center><div>
-        <input class="img-circle" type="image" src="images/prev.png" width="50" height="50" onClick="location.href='include/prevprofile.php?id='+<?php echo $row["id"] ?>">
-        <input class="img-circle" type="image" src="images/edit.png" alt="edit" width="50" height="50">
-        <input class="img-circle" type="image" src="images/save.png" alt="save" width="50" height="50">
-        <input class="img-circle" type="image" src="images/next.png" width="50" height="50" onClick="location.href='include/nextprofile.php?id='+<?php echo $row["id"] ?>">
-      </div>
-    </div></center>
-			
-<script>
-  $(document).ready(function() {
-    $('#dataTables-example').DataTable({
-        responsive: true
+    <script>
+        $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
     });
-  });
-</script>
+    </script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-<script>
-    var app = angular.module('myApp', []);
-    app.controller('customersCtrl', function($scope, $http) {
-    $scope.names = <?php echo json_encode($row) ;?>
-  });
-</script>
-<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('customersCtrl', function($scope, $http) {
+        $scope.names = <?php echo json_encode($row) ;?>
+    });
+    </script>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>            
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>            
 </body>
 </html>

@@ -38,15 +38,15 @@
 		return $number;
 	}
 
-	// function editbox()
- //        {
- //            var txtemail = document.getElementById("email");
- //            var txttel = document.getElementById("tel");
- //            var txtaddress = document.getElementById("address");
- //            var btnsave = document.getElementById('save');
- //            txtemail.readOnly =false;
- //            txttel.readOnly =false;
- //            txtaddress.readOnly =false;
- //            btnsave.disabled = false;
- //        }
+	function updateProfile($id,$email,$tel,$address,$mysqli)
+	{
+		$id = $mysqli->real_escape_string($id);
+		$email = $mysqli->real_escape_string($email);
+		$tel = $mysqli->real_escape_string($tel);
+		$address = $mysqli->real_escape_string($address);
+
+		$sql = "UPDATE users SET email='$email',tel='$tel',address='$address' WHERE id = '$id'";
+		$result = $mysqli->query($sql);
+
+	}
 ?>
