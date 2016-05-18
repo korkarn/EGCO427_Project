@@ -1,6 +1,6 @@
 <?php 
 require_once('include\function.php');
-    $mysqli = connectDatabase();
+    $mysqli = connectDB();
     if(isset($_GET['id']))
     {
         $id = $_GET['id'];
@@ -10,7 +10,7 @@ require_once('include\function.php');
         $id = 1;
     }
     $row = getProfile($id,$mysqli);
-    $mysqli = connectDatabase(); 
+    $mysqli = connectDB(); 
  ?>
 
  <!DOCTYPE html>
@@ -33,7 +33,7 @@ require_once('include\function.php');
 <body ng-app="myApp" ng-controller="customersCtrl">
     <div class="jumbotron" style="background-color: #FF6138">
     </div>
-        <div class="top">
+        <div class="panel-body top">
             <div>
                 <center>
                     <img src="images\users\<?php echo $row["pic"]?>" class="img-circle userpic">
@@ -48,33 +48,39 @@ require_once('include\function.php');
                 </center><br><br><br>
 
   				<center>
-                <div>
-                    <button type="button" class="btn btn-danger btnprofile" onclick="location.href='profile.php'">PROFILE</button>
-                    <button type="button" class="btn btn-danger btnprofile" onclick="location.href='history.php'">HISTORY</button>   
-                    <table>
-                        <tbody class="bordtab">
-                            <tr width=100%>
-                                <td><h1 class="info">E-MAIL : </td>
-                                <td><ul><h1 class="info"><?php echo $row["email"]?></ul></td>
-                            </tr>
-                            <tr width=100%>
-                                <td><h1 class="info">TEL : </td>
-                                <td><ul><h1 class="info"><?php echo $row["tel"]?></ul></td>
-                            </tr>
-                            <tr width=100%>
-                                <td><h1 class="info">ADDRESS : </td>
-                                <td><ul><h1 class="info"><?php echo $row["address"]?></ul></td>
-                            </tr>
-                            <tr width=100%>
-                                <td></td>
-                                <td>
-                                    <input class="img-circle img" type="image" src="images/prev.png" onClick="location.href='include/prev.php?id='+<?php echo $row["id"] ?>">
-                                    <input class="img-circle img" type="image" src="images/next.png" onClick="location.href='include/next.php?id='+<?php echo $row["id"] ?>">                            
-                                    <input class="img-circle img" type="image" src="images/edit.png" onClick="location.href='editprofile.php?id='+<?php echo $row["id"] ?>">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div id="page-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="dataTable_wrapper">
+                                <button type="button" class="btn btn-danger btnprofile" onclick="location.href='profile.php'">PROFILE</button>
+                                <button type="button" class="btn btn-danger btnprofile" onclick="location.href='history.php'">HISTORY</button>   
+                                <table>
+                                <tbody class="bordtab">
+                                    <tr>
+                                        <td><h1 class="info">E-MAIL : </td>
+                                        <td><ul><h1 class="info"><?php echo $row["email"]?></ul></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h1 class="info">TEL : </td>
+                                        <td><ul><h1 class="info"><?php echo $row["tel"]?></ul></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h1 class="info">ADDRESS : </td>
+                                        <td><ul><h1 class="info"><?php echo $row["address"]?></ul></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <input class="img-circle img" type="image" src="images/prev.png" onClick="location.href='include/prev.php?id='+<?php echo $row["id"] ?>">
+                                            <input class="img-circle img" type="image" src="images/next.png" onClick="location.href='include/next.php?id='+<?php echo $row["id"] ?>">                            
+                                            <input class="img-circle img" type="image" src="images/edit.png" onClick="location.href='editprofile.php?id='+<?php echo $row["id"] ?>">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 </center><br><br>
             </div>

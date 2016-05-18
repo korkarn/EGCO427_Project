@@ -27,14 +27,14 @@
 
 </head>
 
-<body>
+<body ng-app="myApp" ng-controller="dealCtrl">
     <div class="jumbotron">
         <center><p>Add deal</p></center>
     </div>
 	<div class="container">
 	    <div class="panel-body">
 	        <div class="row">
-	                <form role="form" name="card" action="include/adddeal.php" method="post">
+	                <form role="form" name="card" action="" method="post">
 	                <div class="col-lg-6">
 	                	<div class="form-group">
 	                        <label>Name deal</label>
@@ -153,43 +153,48 @@
 	                    </div>
 	                    <div class="form-group">
 		                    <label>Class of deal</label>
-		                    <select name="selectClass" class="selectpicker">
+		                    <select class="selectpicker">
 							  <optgroup label="FOOD">
-							    <option value="Dessert">Dessert</option>
-								<option value="Food">Food</option>
-								<option value="Drink">Drink</option>	
+							    <option name="dessert" value="Dessert">Dessert</option>
+								<option name="food" value="Food">Food</option>
+								<option name="drink" value="Drink">Drink</option>	
 							  </optgroup>
 							  <optgroup label="TRAVEL">
-							    <option value="Transport">Transport</option>
-								<option value="Tour-package">Tour-package</option>
-								<option value="Hotel">Hotel</option>	
+							    <option name="transport" value="Transport">Transport</option>
+								<option name="tour" value="Tour-package">Tour-package</option>
+								<option name="hotel" value="Hotel">Hotel</option>	
 							  </optgroup>
 							  <optgroup label="BEAUTY">
-							    <option value="Makeup">Makeup</option>
-								<option value="Fashion">Fashion</option>
-								<option value="Beauty-clinic">Beauty-clinic</option>	
+							    <option name="makeup" value="Makeup">Makeup</option>
+								<option name="fashion" value="Fashion">Fashion</option>
+								<option name="beauty" value="Beauty-clinic">Beauty-clinic</option>	
 							  </optgroup>
 							  <optgroup label="LIFTSTYLE">
-							    <option value="Entertainment">Entertainment</option>
-								<option value="Sport">Sport</option>
-								<option value="Electronic">Electronic</option>	
+							    <option name="entertainment" value="Entertainment">Entertainment</option>
+								<option name="sport" value="Sport">Sport</option>
+								<option name="electronic" value="Electronic">Electronic</option>	
 							  </optgroup>
 							</select>
 						</div>
 					</div>
-					<center>
-			    	<div> 
-			        	<input type="image" type="submit" src="../images/logo/save-icon.png" alt="save" width="50" height="50">
-			        </div>
-   					</center>
-                </form>
+	                </form>
 	            </div>
 	            <!-- /.col-lg-6 (nested) -->
 	    </div>
     </div>
 
+<<<<<<< HEAD
 	<input type="image" src="../images/logo/cancel-icon.png" alt="save" width="50" height="50" onClick="location.href='multideal.php'">
 	
+=======
+    <div>
+        <center>
+        	<input class="img-circle" type="image" src="../images/logo/save-icon.png" alt="save" width="50" height="50">
+        	<input type="image" src="../images/logo/cancel-icon.png" alt="save" width="50" height="50" onClick="location.href='multideal.php'">
+        </center>
+    </div>
+
+>>>>>>> origin/master
 	<script>
 		$(document).on('click', '.browse', function(){
 		  var file = $(this).parent().parent().parent().find('.file');
