@@ -1,0 +1,25 @@
+.deal-name {
+  color: #00A388;
+  margin-top: 20px;
+  font-family: "Architects Daughter";
+  font-weight: bold;
+  font-size: 50px;
+}
+.bg-deal {
+	margin-top: 10px;
+	background-color: #BEEB9F;
+	padding-top: 15px;
+	margin-bottom: 15px;
+}
+.bg-deal .detail {
+	background-color: #FFF;
+	padding-top: 15px;
+	padding-bottom: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.bg-deal .detail > p {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 15px;
+}
+p { word-break: break-all }

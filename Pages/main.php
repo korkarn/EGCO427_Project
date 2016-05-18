@@ -40,14 +40,32 @@
 		    </div>
 		    <!-- Collection of nav links and other content for toggling -->
 		    <div id="navbarCollapse" class="collapse navbar-collapse">
-		        <ul class="nav navbar-nav">
-		            <li class="active"><a href="#">Home</a></li>
-		            <li><a href="#">Profile</a></li>
-		            <li><a href="#">Messages</a></li>
-		        </ul>
-		        <ul class="nav navbar-nav navbar-right">
-		            <li><a href="#">Login</a></li>
-		        </ul>
+		    	<form class="navbar-form navbar-right" role="search">
+				  	<div class="form-group">
+				    	<input type="text" class="form-control" placeholder="Search">
+				  	</div>
+				  	<button type="submit" class="btn btn-default btn-md">Search</button>
+
+		         	<!-- <button type="button" data-toggle="collapse" class="navbar-toggle">
+			            <span class="sr-only">Toggle navigation</span>
+			            <span class="icon-bar">Home</span>
+			            <span class="icon-bar">Food</span>
+			            <span class="icon-bar">Beauty</span>
+			            <span class="icon-bar">Travel</span>
+			            <span class="icon-bar">Lifestyle</span>
+		        	</button> -->
+
+					<ul class="nav navbar-nav-main navbar-right">
+		            	<li><a href="#">Login</a></li>
+		         	</ul>
+
+		         	<button type="button" class="btn btn-default btn-md">Sign up for free</button>
+
+				  	<a href="#">
+			        	<img class="navbar-brand-avatar" alt="logo" src="../images/logo/avatar.png">
+			      	</a>
+				</form>
+		        
 		    </div>
 	    </div>
 	</nav>

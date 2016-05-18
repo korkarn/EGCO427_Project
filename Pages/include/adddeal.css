@@ -1,0 +1,25 @@
+.jumbotron{
+	background-color: #FF6138;
+	height: 150px;
+}
+.jumbotron > center > p {
+	margin-top: -25px;
+	color: #ffff9d;
+	font-family: "Architects Daughter";
+	font-weight: bold;
+	font-size: 100px;
+}
+.btn-default{
+	background-color: #BEEB9F;
+	color: #FF6138;
+	font-family: "Architects Daughter";
+	font-weight: bold;
+	border: #BEEB9F;
+}
+.file {
+  	visibility: hidden;
+  	position: absolute;
+}
+.icon{
+	
+}

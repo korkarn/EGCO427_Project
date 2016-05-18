@@ -9,6 +9,11 @@
   width: 170px;
   height: 100px;
 }
+.navbar-default .navbar-brand-avatar {
+  margin-top: 5px;
+  width: 70px;
+  height: 70px;
+}
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
   color: #ffffff;
@@ -16,10 +21,24 @@
 .navbar-default .navbar-text {
   color: #ffff9d;
 }
+.navbar-default .form-group {
+  margin-top: 23px;
+}
+.navbar-default .btn-default {
+  margin-top: 23px;
+  background-color: #FFFF9D;
+}
 .navbar-default .navbar-nav > li > a {
   color: #ffff9d;
   margin-top: 20px;
   font-family: "Architects Daughter";
+  font-weight: bold;
+  font-size: 25px;
+}
+.navbar-default .navbar-nav-main > li > a {
+  color: #ffff9d;
+  margin-top: 20px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-size: 25px;
 }
