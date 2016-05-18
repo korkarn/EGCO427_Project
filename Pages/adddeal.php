@@ -27,7 +27,7 @@
 
 </head>
 
-<body ng-app="myApp" ng-controller="dealCtrl">
+<body>
     <div class="jumbotron">
         <center><p>Add deal</p></center>
     </div>
@@ -153,52 +153,42 @@
 	                    </div>
 	                    <div class="form-group">
 		                    <label>Class of deal</label>
-		                    <select class="selectpicker">
+		                    <select name="selectClass" class="selectpicker">
 							  <optgroup label="FOOD">
-							    <option name="dessert" value="Dessert">Dessert</option>
-								<option name="food" value="Food">Food</option>
-								<option name="drink" value="Drink">Drink</option>	
+							    <option value="Dessert">Dessert</option>
+								<option value="Food">Food</option>
+								<option value="Drink">Drink</option>	
 							  </optgroup>
 							  <optgroup label="TRAVEL">
-							    <option name="transport" value="Transport">Transport</option>
-								<option name="tour" value="Tour-package">Tour-package</option>
-								<option name="hotel" value="Hotel">Hotel</option>	
+							    <option value="Transport">Transport</option>
+								<option value="Tour-package">Tour-package</option>
+								<option value="Hotel">Hotel</option>	
 							  </optgroup>
 							  <optgroup label="BEAUTY">
-							    <option name="makeup" value="Makeup">Makeup</option>
-								<option name="fashion" value="Fashion">Fashion</option>
-								<option name="beauty" value="Beauty-clinic">Beauty-clinic</option>	
+							    <option value="Makeup">Makeup</option>
+								<option value="Fashion">Fashion</option>
+								<option value="Beauty-clinic">Beauty-clinic</option>	
 							  </optgroup>
 							  <optgroup label="LIFTSTYLE">
-							    <option name="entertainment" value="Entertainment">Entertainment</option>
-								<option name="sport" value="Sport">Sport</option>
-								<option name="electronic" value="Electronic">Electronic</option>	
+							    <option value="Entertainment">Entertainment</option>
+								<option value="Sport">Sport</option>
+								<option value="Electronic">Electronic</option>	
 							  </optgroup>
 							</select>
 						</div>
 					</div>
-	                </form>
+					<center>
+			    	<div> 
+			        	<input type="image" type="submit" src="../images/logo/save-icon.png" alt="save" width="50" height="50">
+			        </div>
+   					</center>
+                </form>
 	            </div>
 	            <!-- /.col-lg-6 (nested) -->
 	    </div>
     </div>
 
-    <div>
-        <center>
-        	<a href="#" class="icon"><img alt="save" src="../images/logo/save-icon.png"></a>
-        	<a href="#" class="icon"><img alt="cancel" src="../images/logo/cancel-icon.png"></a>
-        </center>
-    </div>
-
-	<script>
-		$(document).on('click', '.browse', function(){
-		  var file = $(this).parent().parent().parent().find('.file');
-		  file.trigger('click');
-		});
-		$(document).on('change', '.file', function(){
-		  $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
-		});
-	</script>
+	<input type="image" src="../images/logo/cancel-icon.png" alt="save" width="50" height="50" onClick="location.href='multideal.php'">
 
 </body>
 </html>
