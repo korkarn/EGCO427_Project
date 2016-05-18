@@ -189,6 +189,16 @@
     </div>
 
 	<input type="image" src="../images/logo/cancel-icon.png" alt="save" width="50" height="50" onClick="location.href='multideal.php'">
+	
+	<script>
+		$(document).on('click', '.browse', function(){
+		  var file = $(this).parent().parent().parent().find('.file');
+		  file.trigger('click');
+		});
+		$(document).on('change', '.file', function(){
+		  $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
+		});
+	</script>
 
 </body>
 </html>

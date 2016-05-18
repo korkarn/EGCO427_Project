@@ -35,6 +35,13 @@
   font-weight: bold;
   font-size: 25px;
 }
+.navbar-default .navbar-right {
+  color: #ffff9d;
+  margin-top: 10px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 25px;
+}
 .navbar-default .navbar-nav-main > li > a {
   color: #ffff9d;
   margin-top: 20px;

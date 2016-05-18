@@ -1,7 +1,6 @@
 <?php
 	session_start();
 	$_SESSION["admin"] = 1;
-	$_SESSION["class_id"] = 1;
 
 	require_once('include/config.php');
     $mysqli = connectDB();
@@ -49,7 +48,7 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
 		        </button>
-		        <a href="#">
+		        <a href="main.php">
 		        	<img class="navbar-brand" alt="logo" src="../images/logo/logo-small.png">
 		      	</a>
 		    </div>
@@ -64,7 +63,7 @@
 	    <div class="panel-body">
 	        <div class="row">
 	                <form role="form" name="card" method="post">
-	                <div class="col-lg-6">
+	                <div class="col-lg-4">
 	                	<div class="form-group">
 	                        <label>Name deal</label>
 	                        <input name="name" class="form-control" value="<?php echo $row["name"] ?>">
@@ -126,7 +125,7 @@
 	                    </div>
                     </div>
 
-					<div class="col-lg-6">
+					<div class="col-lg-4">
 	                    <div class="form-group">
 	                    	<label>Pic No. 1</label>
 						    <input type="image" type="submit" src="../images/<?php echo $_SESSION["name_main"] ?>/<?php echo $_SESSION["name_sub"] ?>/<?php echo $row["pic1"] ?>" alt="save" width="200" height="200">
@@ -139,14 +138,21 @@
 	                    	<label>Pic No. 3</label>
 						    <input type="image" type="submit" src="../images/<?php echo $_SESSION["name_main"] ?>/<?php echo $_SESSION["name_sub"] ?>/<?php echo $row["pic3"] ?>" alt="save" width="200" height="200">
 						</div>
+					</div>
+
+					<div class="col-lg-4">
+					<?php if($row["pic4"] != ""){ ?>
 						<div class="form-group">
 	                    	<label>Pic No. 4</label>
 						    <input type="image" type="submit" src="../images/<?php echo $_SESSION["name_main"] ?>/<?php echo $_SESSION["name_sub"] ?>/<?php echo $row["pic4"] ?>" alt="save" width="200" height="200">
 						</div>
+					<?php } ?>
+					<?php if($row["pic5"] != ""){ ?>
 						<div class="form-group">
 	                    	<label>Pic No. 5</label>
 						    <input type="image" type="submit" src="../images/<?php echo $_SESSION["name_main"] ?>/<?php echo $_SESSION["name_sub"] ?>/<?php echo $row["pic5"] ?>" alt="save" width="200" height="200">
 						</div>
+					<?php } ?>
 					</div>
                 </form>
 	            </div><!-- /.col-lg-6 (nested) -->

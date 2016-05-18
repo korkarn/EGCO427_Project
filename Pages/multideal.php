@@ -42,7 +42,7 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
 		        </button>
-		        <a href="#">
+		        <a href="main.php">
 		        	<img class="navbar-brand" alt="logo" src="../images/logo/logo-small.png">&nbsp;&nbsp;
 		      	</a>
 		    </div>
