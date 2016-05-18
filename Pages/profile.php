@@ -45,11 +45,12 @@ require_once('include\function.php');
                 
   				<center>
                     <h1 class="point"><img src="images\coins.png" class="img-circle" width="40" height="40">&nbsp;<?php echo $row["points"]?> points
-                </center><br>
+                </center><br><br><br>
 
-  				<div>
-                    <center>
-                    <button type="button" class="btn btn-primary btnprofile" onclick="location.href='profile.php'">PROFILE</button>
+  				<center>
+                <div>
+                    <button type="button" class="btn btn-danger btnprofile" onclick="location.href='profile.php'">PROFILE</button>
+                    <button type="button" class="btn btn-danger btnprofile" onclick="location.href='history.php'">HISTORY</button>   
                     <table>
                         <tbody class="bordtab">
                             <tr width=100%>
@@ -73,16 +74,9 @@ require_once('include\function.php');
                                 </td>
                             </tr>
                         </tbody>
-                    </table><br><br>
-                    </center>
+                    </table>
                 </div>
-                    
-                <center>
-                <div class="container">
-                    <button type="button" class="btn btn-primary btnprofile" onclick="location.href='profile.php'">PROFILE</button>
-                    <button type="button" class="btn btn-primary btnprofile" onclick="location.href='history.php'">HISTORY</button>
-                </div>
-                </center>
+                </center><br><br>
             </div>
         </div>
 

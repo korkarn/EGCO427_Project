@@ -29,47 +29,51 @@ require_once('include\function.php');
 </head>
 
 <body ng-app="myApp" ng-controller="customersCtrl">
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron" width=100% style="background-color: #ff6138;height: 200px"></div>
-        <div class="panel-body" style="margin-top: -130px">
+    <div class="jumbotron" style="background-color: #FF6138">
+    </div>
+        <div class="top">
             <div>
                 <center>
-                    <img src="images\users\<?php echo $row["pic"]?>" class="img-circle" width="160" height="160">
+                    <img src="images\users\<?php echo $row["pic"]?>" class="img-circle userpic">
                 </center>
+                
                 <center>
-                    <h1 class="username"><?php echo $row["username"]?></h>
+                    <h1 class="username"><?php echo $row["username"]?>
                 </center>
+                
                 <center>
-                    <h1 class="point"><img src="images\coins.png" class="img-circle" width="40" height="40">&nbsp;<?php echo $row["points"]?> points</h>
-                </center><br>
-                <center>
-                <form role="form" name="save" action="include/save.php" method="post">
-                    <input name="id" type="text" class="form-control" value="<?php echo $row["id"]?>">
-                    <table>
-                        <tbody>
-                            <tr width=100%>
-                                <td><h1 class="info">E-MAIL : </h></td>
-                                <td><h1 class="info"><ul><input style="width:300px" name="email" type="text" class="form-control" value="<?php echo $row["email"]?>"></h></ul></td>
-                            </tr>
-                            <tr width=100%>
-                                <td><h1 class="info">TEL : </h></td>
-                                <td><ul><h1 class="info"><input style="width:300px" name="tel" type="text" class="form-control" value="<?php echo $row["tel"]?>"></h></ul></td>
-                            </tr>
-                            <tr width=100%>
-                                <td><h1 class="info">ADDRESS : </h></td>
-                                <td><ul><h1 class="info"><input style="width:300px" name="address" type="text" class="form-control" value="<?php echo $row["address"]?>"></h></ul></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <br><br><br><br><br>
+                    <h1 class="point"><img src="images\coins.png" class="img-circle" width="40" height="40">&nbsp;<?php echo $row["points"]?> points
+                </center><br><br><br>
 
-                    <center>
-                    <div> 
-                        <input class="img-circle" type="image" src="images/save.png" alt="save" width="50" height="50">
-                        <input class="img-circle" type="image" src="images/exit.png" alt="exit" width="50" height="50" onClick="location.href='profile.php?id='+<?php echo $row["id"] ?>">
-                    </div>
-                    </center>
-                </form>
+                <center>
+                    <form role="form" name="save" action="include/save.php" method="post">
+                        <input name="id" type="text" class="form-control" value="<?php echo $row["id"]?>">
+                            <table>
+                            <tbody>
+                                <tr width=100%>
+                                    <td><h1 class="info">E-MAIL :</td>
+                                    <td><h1 class="info"><ul><input style="width:300px" name="email" type="text" class="form-control" value="<?php echo $row["email"]?>"></ul></td>
+                                </tr>
+                                <tr width=100%>
+                                    <td><h1 class="info">TEL :</td>
+                                    <td><ul><h1 class="info"><input style="width:300px" name="tel" type="text" class="form-control" value="<?php echo $row["tel"]?>"></ul></td>
+                                </tr>
+                                <tr width=100%>
+                                    <td><h1 class="info">ADDRESS :</td>
+                                    <td><ul><h1 class="info"><input style="width:300px" name="address" type="text" class="form-control" value="<?php echo $row["address"]?>"></ul></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br><br><br><br><br>
+
+                        <center>
+                        <div> 
+                            <input class="img-circle img" type="image" src="images/save.png" alt="save">
+                            <input class="img-circle img" type="image" src="images/exit.png" alt="exit" onClick="location.href='profile.php?id='+<?php echo $row["id"] ?>">
+                        </div>
+                        </center>
+                    </form>
+                </center>
 
     <script>
         $(document).ready(function() {

@@ -39,59 +39,52 @@ require_once('include\function.php');
 </head>
 
 <body ng-app="myApp" ng-controller="customersCtrl">
- 	  <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron" width=100% style="background-color: #ff6138;height: 200px"></div>
-        <div class="panel-body" style="margin-top: -130px">
+    <div class="jumbotron" style="background-color: #FF6138">
+    </div>
+        <div class="panel-body top">
             <div>
-                <center>
-                    <img src="images\users\<?php echo $row["pic"]?>" class="img-circle" width="160" height="160">
-                </center>
-  				      <center>
-                    <h1 class="username"><?php echo $row["username"]?></h>
-                </center>
-  				      <center>
-                    <h1 class="point"><img src="images\coins.png" class="img-circle" width="40" height="40">&nbsp;<?php echo $row["points"]?> points</h>
-                </center><br>
-  				<center>
-                
-                <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                        <!-- /.panel-heading -->
-                        <div class="dataTable_wrapper">
-                          <table class="tab">
-                            <thead>
-                              <tr>
-                                <th class="th" width=40% width="=500px">Date</th>
-                                <th class="th" width=60%>Promotion</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr class="tr" ng-repeat="row1 in names | filter:test">
-                                <td class="td">{{row1.date}}</td>
-                                <td class="td">{{row1.promotion}}</td>
-                              </tr>     
-                            </tbody>
-                          </table>
-                        </div>
-                        </div>
-                        <!-- /.panel-body -->
-                        </div>
-                <!-- /.col-lg-12 -->    
-            </div>
-
-
-                </center>
-            </div>
-            <br><br><br>
-        </div>
-
-        <center>
-            <div class="container">
-                <button type="button" class="btn btn-primary btnprofile" onclick="location.href='profile.php'">PROFILE</button>
-                <button type="button" class="btn btn-primary btnprofile" onclick="location.href='history.php'">HISTORY</button>
-            </div>
+            <center>
+                <img src="images\users\<?php echo $row["pic"]?>" class="img-circle userpic">
             </center>
+  		    
+            <center>
+                <h1 class="username"><?php echo $row["username"]?></h>
+            </center>
+  				      
+            <center>
+                <h1 class="point"><img src="images\coins.png" class="img-circle" width="40" height="40">&nbsp;<?php echo $row["points"]?> points
+            </center><br><br><br>
+  			
+                <center>
+                <div id="page-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="dataTable_wrapper">
+                                <button type="button" class="btn btn-danger btnprofile" onclick="location.href='profile.php'">
+                            PROFILE</button>
+                                <button type="button" class="btn btn-danger btnprofile" onclick="location.href='history.php'">
+                            HISTORY</button>   
+                                <table class="tab">
+                                    <thead>
+                                    <tr>
+                                        <th class="th" width=35% width="=500px">Date</th>
+                                        <th class="th" width=65%>Promotion</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="tr" ng-repeat="row1 in names | filter:test">
+                                            <td class="td">{{row1.date}}</td>
+                                            <td class="td">{{row1.promotion}}</td>
+                                        </tr>     
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </center>
+            </div>
+        </div>
 
     <script>
         var app = angular.module('myApp', []);

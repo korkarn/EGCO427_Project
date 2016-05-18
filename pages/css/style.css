@@ -1,6 +1,6 @@
 .jumbotron {
     background-color: #FF6138;
-    height: 200px;
+    height: 150px;
     width: 100%;
 }
 
@@ -41,6 +41,7 @@
     border: 1px solid black;
     border-collapse: collapse;
     width: 60%;
+    margin-bottom: 30px;
 }
 
 .th, .td {
@@ -63,7 +64,7 @@
 .btnprofile {
     font-family: "Allerta Stencil";
     font-size: 20px;
-    margin: 30px;
+    background-color: #AD001D;
 }
 
 .img {
@@ -74,6 +75,6 @@
 }
 
 .bordtab {
-    border: 2px solid #FF6138;
+    border: 2px solid #FF6138
 }
 
