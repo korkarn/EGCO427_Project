@@ -1,17 +1,5 @@
 <?php
 	require_once('config.php');
-	function connectDatabase()
-	{
-		// Connect to database
-		$mysqli = new mysqli(DB_HOSTNAME, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
-		// Check connection
-		if (mysqli_connect_errno()) {
-			printf("Unable to connect to database: %s", mysqli_connect_error());
-			exit();
-		}
-		return $mysqli;
-	}
-
 	function getProfile($id,$mysqli)
 	{
 		$sql = "SELECT * FROM users WHERE id = '$id'";
