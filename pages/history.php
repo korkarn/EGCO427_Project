@@ -1,6 +1,6 @@
 <?php 
 require_once('include\function.php');
-    $mysqli = connectDatabase();
+    $mysqli = connectDB();
     $sql = "SELECT history.date, deal.promotion FROM deal INNER JOIN history ON deal.id=history.deal_id ORDER BY date DESC";
     $result = $mysqli->query($sql);
     while ($res = $result->fetch_array(MYSQLI_ASSOC))
@@ -10,7 +10,7 @@ require_once('include\function.php');
  ?>
 
  <?php 
-    $mysqli = connectDatabase();
+    $mysqli = connectDB();
     if(isset($_GET['id']))
     {
         $id = $_GET['id'];
@@ -20,7 +20,7 @@ require_once('include\function.php');
         $id = 1;
     }
     $row = getProfile($id,$mysqli);
-    $mysqli = connectDatabase(); 
+    $mysqli = connectDB(); 
  ?>
 
  <!DOCTYPE html>

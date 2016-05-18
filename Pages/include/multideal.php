@@ -4,10 +4,10 @@
 	require_once('config.php');
 	$mysqli = connectDB();
 
-	$day_comp = date("Y-m-d");
+	$day_comp = date("d-m-Y");
 
-	$sql = "SELECT * FROM deal WHERE date_start < '$day_comp' AND date_end > '$day_comp' ORDER BY date_start DESC";
-	//$sql = "SELECT * FROM deal";
+	//$sql = "SELECT * FROM deal WHERE date_start < '$day_comp' AND date_end > '$day_comp' ORDER BY date_start DESC";
+	$sql = "SELECT * FROM deal";
 	
 	$result = mysqli_query($mysqli, $sql);
 

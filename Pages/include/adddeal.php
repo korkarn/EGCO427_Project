@@ -1,5 +1,4 @@
 <?php
-	session_start();
 	require_once('config.php');
 
 	$name = $_POST['name'];
@@ -20,7 +19,18 @@
 	$point = $_POST['point'];
 	$datestart = $_POST['datestart'];
 	$dateend = $_POST['dateend'];
-	$selectClass = $_POST['selectClass'];
+	$dessert = $_POST['dessert'];
+	$food = $_POST['food'];
+	$drink = $_POST['drink'];
+	$transport = $_POST['transport'];
+	$tour = $_POST['tour'];
+	$hotel = $_POST['hotel'];
+	$makeup = $_POST['makeup'];
+	$fashion = $_POST['fashion'];
+	$beauty = $_POST['beauty'];
+	$entertainment = $_POST['entertainment'];
+	$sport = $_POST['sport'];
+	$electronic = $_POST['electronic'];
 
 	// Connect to database
 	$mysqli = connectDB();
@@ -43,28 +53,64 @@
 	$point = $mysqli->real_escape_string($point);
 	$datestart = $mysqli->real_escape_string($datestart);
 	$dateend = $mysqli->real_escape_string($dateend);
-	$selectClass = $mysqli->real_escape_string($selectClass);
-	
-	$sql_id = "SELECT id, name_main FROM class WHERE name_sub = '$selectClass'";
-	$result= mysqli_query($mysqli, $sql_id) or die("Data not found.");
-	$row = $result->fetch_array(MYSQLI_ASSOC);
-	$id = $row['id'];
-	$_SESSION["name_main"] = $row['name_main'];
+	$dessert = $mysqli->real_escape_string($dessert);
+	$food = $mysqli->real_escape_string($food);
+	$drink = $mysqli->real_escape_string($drink);
+	$transport = $mysqli->real_escape_string($transport);
+	$tour = $mysqli->real_escape_string($tour);
+	$hotel = $mysqli->real_escape_string($hotel);
+	$makeup = $mysqli->real_escape_string($makeup);
+	$fashion = $mysqli->real_escape_string($fashion);
+	$beauty = $mysqli->real_escape_string($beauty);
+	$entertainment = $mysqli->real_escape_string($entertainment);
+	$sport = $mysqli->real_escape_string($sport);
+	$electronic = $mysqli->real_escape_string($electronic);
 
-	$sql_insert = "INSERT INTO deal (name,promotion,description,price_new,price_old,address,tel,website,latitude,longitude,pic1,pic2,pic3,pic4,pic5,points,class_id,date_start,date_end) VALUES ('$name','$promotion','$description','$newprice','$oldprice','$addr','$tel','$web','$lat','$log','$pic1','$pic2','$pic3','$pic4','$pic5','$point','$id','$datestart','$dateend')";
-	$result = $mysqli->query($sql_insert);
+	echo $name;
+	echo $promotion;
+	echo $description;
+	echo $newprice;
+	echo $oldprice;
+	echo $addr;
+	echo $tel;
+	echo $web;
+	echo $lat;
+	echo $log;
+	echo $pic1;
+	echo $pic2;
+	echo $pic3;
+	echo $pic4;
+	echo $pic5;
+	echo $point;
+	echo $datestart;
+	echo $dateend;
+	echo $dessert;
+	echo $food;
+	echo $drink;
+	echo $transport;
+	echo $tour;
+	echo $hotel;
+	echo $makeup;
+	echo $fashion;
+	echo $beauty;
+	echo $entertainment;
+	echo $sport;
+	echo $electronic;
 
-	$sql = "SELECT id FROM deal WHERE id = (SELECT max(id) FROM deal)";
-	$result = $mysqli->query($sql);
-	$row = $result->fetch_array(MYSQLI_ASSOC);
-	$number = $row['id'];
+	// $sql_uid = "SELECT uid FROM user WHERE creditcard = '$creditCardNo'";
+	// $result= mysqli_query($mysqli, $sql_uid) or die("Data not found.");
+	// $row = $result->fetch_array(MYSQLI_ASSOC);
+	// $uid = $row['uid'];
 
-	$_SESSION["class_id"] = $number;
-	$_SESSION["name_sub"] = $selectClass;
+	// $sql_insert = "INSERT INTO cardstatement (uid,number,date,sellerno,product,price) 
+	// 			VALUES ('$uid','$creditCardNo','$date','$sellerNo','$product','$price')";
+	// $result = $mysqli->query($sql_insert);
 
-	// echo $_SESSION["name_main"];
-	// echo $_SESSION["name_sub"];
+	// $sql = "SELECT * FROM cardstatement WHERE transno = (SELECT max(transno) FROM cardstatement)";
+	// $result = $mysqli->query($sql);
+	// $row = $result->fetch_array(MYSQLI_ASSOC);
+	// $number = $row['transno'];
 
-	header('Location: ../adddeal-success.php');
+	// header('Location: ../cardstate.php?id='.$number);
 
 ?>
