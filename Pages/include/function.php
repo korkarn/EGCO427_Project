@@ -37,4 +37,52 @@
 		$result = $mysqli->query($sql);
 
 	}
+
+	function getDeal($id,$mysqli)
+	{
+		$sql = "SELECT * FROM deal WHERE class_id = 1 ORDER BY date_start DESC";
+		$result = $mysqli->query($sql);
+		$row = $result->fetch_array(MYSQLI_ASSOC);
+		while ($res = $result->fetch_array(MYSQLI_ASSOC))
+        {
+            $row =$res;
+        }
+        return $row;
+	}
+
+	function getDeal1($id,$mysqli)
+	{
+		$sql = "SELECT * FROM deal WHERE class_id = 6 ORDER BY date_start DESC";
+		$result = $mysqli->query($sql);
+		$row = $result->fetch_array(MYSQLI_ASSOC);
+		while ($res = $result->fetch_array(MYSQLI_ASSOC))
+        {
+            $row1 =$res;
+        }
+        return $row1;
+	 }
+
+	function getDeal2($id,$mysqli)
+	{
+		$sql = "SELECT * FROM deal WHERE class_id = 7 ORDER BY date_start DESC";
+		$result = $mysqli->query($sql);
+		$row = $result->fetch_array(MYSQLI_ASSOC);
+		while ($res = $result->fetch_array(MYSQLI_ASSOC))
+        {
+            $row2 =$res;
+        }
+        return $row2;
+	}
+
+	function getDeal3($id,$mysqli)
+	{
+		$sql = "SELECT * FROM deal WHERE class_id = 11 ORDER BY date_start DESC";
+		$result = $mysqli->query($sql);
+		$row = $result->fetch_array(MYSQLI_ASSOC);
+		while ($res = $result->fetch_array(MYSQLI_ASSOC))
+        {
+            $row3 =$res;
+        }
+        return $row3;
+	}
 ?>

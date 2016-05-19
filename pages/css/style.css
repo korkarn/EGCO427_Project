@@ -1,3 +1,39 @@
+.login {
+    background-color: #FFFF9D;
+}
+
+.title {
+    font-family: "Architects Daughter";
+    font-size: 36px;
+    font-weight: bold;
+    font-color: #FFFF9D;
+    margin-bottom: 20px;
+}
+
+.field {
+    background-color: #FF6138;
+    padding: 20px;
+}
+
+.form-group {
+    font-family: "Architects Daughter";
+    font-size: 24px;
+    color: #FFFF9D;
+}
+
+.loginbtn {
+    font-family: "Architects Daughter";
+    font-size: 24px;
+    background-color: #79BD8F;
+}
+
+.user {
+    width: 80%;
+    height: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .jumbotron {
     background-color: #FF6138;
     height: 150px;
@@ -78,3 +114,8 @@
     border: 2px solid #FF6138
 }
 
+.logo {
+    width: 60%;
+    height:60%;
+    margin-top: 40px;
+}

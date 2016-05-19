@@ -1,12 +1,61 @@
 <?php 
 require_once('include\function.php');
-    $mysqli = connectDatabase();
-    $sql = "SELECT * FROM deal WHERE class_id = 7";
-    $result = $mysqli->query($sql);
-    while ($res = $result->fetch_array(MYSQLI_ASSOC))
-        {
-            $row[] =$res;
-        }
+    $mysqli = connectDB();
+    if(isset($_GET['id']))
+    {
+        $id = $_GET['id'];
+    }
+    else
+    {
+        $id = 1;
+    }
+    $row = getDeal($id,$mysqli);
+    $mysqli = connectDB(); 
+ ?>
+
+<?php 
+require_once('include\function.php');
+    $mysqli = connectDB();
+    if(isset($_GET['id']))
+    {
+        $id = $_GET['id'];
+    }
+    else
+    {
+        $id = 1;
+    }
+    $row1 = getDeal1($id,$mysqli);
+    $mysqli = connectDB(); 
+ ?>
+
+<?php 
+require_once('include\function.php');
+    $mysqli = connectDB();
+    if(isset($_GET['id']))
+    {
+        $id = $_GET['id'];
+    }
+    else
+    {
+        $id = 1;
+    }
+    $row2 = getDeal2($id,$mysqli);
+    $mysqli = connectDB(); 
+ ?>
+
+ <?php 
+require_once('include\function.php');
+    $mysqli = connectDB();
+    if(isset($_GET['id']))
+    {
+        $id = $_GET['id'];
+    }
+    else
+    {
+        $id = 1;
+    }
+    $row3 = getDeal3($id,$mysqli);
+    $mysqli = connectDB(); 
  ?>
 
 <!DOCTYPE html>
@@ -27,6 +76,7 @@ require_once('include\function.php');
 
 	<!-- main css -->
 	<link href="include/main.css" rel="stylesheet">
+  <link href="include/multideal.css" rel="stylesheet">
 
 	<!-- font style : Architects+Daughter -->
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Architects+Daughter" />
@@ -66,64 +116,97 @@ require_once('include\function.php');
 			            <span class="icon-bar">Lifestyle</span>
 		        	</button> -->
 
-					<div class="nav navbar-nav-main navbar-login">
+              <div class="nav navbar-nav-main navbar-right">
 		            	<li><a href="#">Login</a></li>
 		         	</div>
 
 		         	<button type="button" class="btn btn-default btn-md">Sign up for free</button>
 
-				  	<a href="#">
+                <a href="#">
 			        	<img class="navbar-brand-avatar" alt="logo" src="../images/logo/avatar.png">
 			      	</a>
 				</form>
 		        
 		    </div>
 	    </div>
-	</nav>
+    </nav>
 
-	<div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
+    <div class="container">
+    <br>
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">        
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <img src="images/food/dessert/<?php echo $row["pic1"]?>">
+            </div>
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="..\Images\beauty\makeup<?php echo $row["pic1"]?>" alt="New York">
-      <div class="carousel-caption">
-      </div> 
+            <div class="item">
+              <img src="images/travel/hotel/<?php echo $row1["pic1"]?>">
+            </div>
+    
+            <div class="item">
+              <img src="../Images/beauty/makeup/<?php echo $row2["pic1"]?>">
+            </div>
+
+            <div class="item">
+              <img src="../Images/LIFESTYLE/sport/<?php echo $row3["pic1"]?>">
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+    <br>
+
+    <div class="container" ng-repeat="rec in names">
+      <div class="row bg-deal">
+        <div class="col-md-4 col-sm-8">
+          <a href="#" class="thumbnail">
+          <img src="images/food/dessert/<?php echo $row["pic2"]?>" alt="deal">
+          </a>
+        </div>
+      </div>
     </div>
 
-    <div class="item">
-      <img src="..\Images\beauty\makeup<?php echo $row["pic3"]?>" alt="Chicago">
-      <div class="carousel-caption">
-      </div> 
+    <div class="container" ng-repeat="rec in names">
+      <div class="row bg-deal1">
+        <div class="col-md-4 col-sm-8">
+          <a href="#" class="thumbnail">
+            <img src="images/travel/hotel/<?php echo $row1["pic4"]?>" alt="deal">
+          </a>
+        </div>
+      </div>
     </div>
 
-    <div class="item">
-      <img src="..\Images\beauty\makeup<?php echo $row["pic5"]?>" alt="Los Angeles">
-      <div class="carousel-caption">
-      </div> 
+    <div class="container" ng-repeat="rec in names">
+      <div class="row bg-deal2">
+        <div class="col-md-4 col-sm-8">
+          <a href="#" class="thumbnail">
+            <img src="../Images/beauty/makeup/<?php echo $row2["pic3"]?>" alt="deal">
+          </a>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <!-- Left and right controls -->
-  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
+    <div class="container" ng-repeat="rec in names">
+      <div class="row bg-deal3">
+        <div class="col-md-4 col-sm-8">
+          <a href="#" class="thumbnail">
+            <img src="../Images/LIFESTYLE/sport/<?php echo $row3["pic5"]?>" alt="deal">
+          </a>
+        </div>
+      </div>
+    </div>
 
-<p><?php echo $row["pic5"]?></p>
-
-<script>
+    <script>
         var app = angular.module('myApp', []);
         app.controller('customersCtrl', function($scope, $http) {
         $scope.names = <?php echo json_encode($row) ;?>

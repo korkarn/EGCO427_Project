@@ -1,6 +1,6 @@
 <?php 
 require_once('include\function.php');
-    $mysqli = connectDatabase();
+    $mysqli = connectDB();
     if(isset($_GET['id']))
     {
         $id = $_GET['id'];
@@ -10,7 +10,7 @@ require_once('include\function.php');
         $id = 1;
     }
     $row = getProfile($id,$mysqli);
-    $mysqli = connectDatabase(); 
+    $mysqli = connectDB(); 
  ?>
 
  <!DOCTYPE html>
@@ -84,12 +84,6 @@ require_once('include\function.php');
     </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-    <script>
-        var app = angular.module('myApp', []);
-        app.controller('customersCtrl', function($scope, $http) {
-        $scope.names = <?php echo json_encode($row) ;?>
-      });
-    </script>
     
     <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->

@@ -87,13 +87,6 @@ require_once('include\function.php');
         </div>
 
     <script>
-        var app = angular.module('myApp', []);
-        app.controller('customersCtrl', function($scope, $http) {
-        $scope.names = <?php echo json_encode($row) ;?>
-    });
-    </script>
-
-    <script>
         $(document).ready(function() {
         $('#dataTables-example').DataTable({
             responsive: true
