@@ -1,6 +1,8 @@
 <?php
  	session_start();
  	$_SESSION["admin"] = 1;
+  $_SESSION['name_main'] = $_GET['main'];
+  $_SESSION['name_sub'] = $_GET['sub'];
  ?>
  
  <!DOCTYPE html>
@@ -49,19 +51,27 @@
  		    <!-- Collection of nav links and other content for toggling -->
  		    <div id="navbarCollapse" class="collapse navbar-collapse">
  		        <ul class="nav navbar-nav">
- 		            <li class="active"><a href="#">Food &nbsp;</a></li>
- 		            <li><a href="#">Dessert &nbsp;</a></li>
- 		            <li><a href="#">Drink</a></li>
+ 		            <li><a href="multideal.php?main=<?php echo $_SESSION['name_main'] ?>&sub=<?php echo $_SESSION['name_sub1'] ?>">{{sub[0]}} &nbsp;</a></li>
+ 		            <li><a href="multideal.php?main=<?php echo $_SESSION['name_main'] ?>&sub=<?php echo $_SESSION['name_sub2'] ?>">{{sub[1]}} &nbsp;</a></li>
+ 		            <li><a href="multideal.php?main=<?php echo $_SESSION['name_main'] ?>&sub=<?php echo $_SESSION['name_sub3'] ?>">{{sub[2]}}</a></li>
  		        </ul>
- 		        <ul class="nav navbar-nav navbar-right">
- 		            <li><a href="#">Login</a></li>
- 		        </ul>
+ 		        <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Action <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="multideal.php?main=FOOD&sub=Dessert">FOOD</a></li>
+                <li><a href="multideal.php?main=TRAVEL&sub=Transport">TRAVEL</a></li>
+                <li><a href="multideal.php?main=BEAUTY&sub=Makeup">BEAUTY</a></li>
+                <li><a href="multideal.php?main=LIFESTYLE&sub=Entertainment">LIFESTYLE</a></li>
+              </ul>
+            </div>
  		    </div>
  	    </div>
  	</nav>
  	
  	<center>
- 		<h1 class="deal-name">FOOD
+ 		<h1 class="deal-name"><?php echo $_SESSION['name_sub'] ?>
  			<?php
              if($_SESSION["admin"] == 1){?>
  			<a href="adddeal.php">
@@ -77,14 +87,15 @@
  	<div class="container" ng-repeat="rec in names">
  		<div class="row bg-deal">
  			<div class="col-md-4 col-sm-8">
- 				<a href="#" class="thumbnail">
- 			      <img src="../images/logo/logo-small.png" alt="deal">
+ 				<a href="singdeal.php?id={{rec.Id}}" class="thumbnail">
+ 			     <img src="../images/<?php echo $_SESSION['name_main'] ?>/<?php echo $_SESSION['name_sub'] ?>/{{rec.Pic1}}" alt="deal">
+            <!-- <img src="../images/logo/logo-small.png" alt="deal"> -->
  			    </a>
  			</div>
  			<div class="col-md-8 col-sm-4">
  			    <div class="detail">
  				  <p><b>Promotion : &nbsp; </b>{{rec.Promotion}}&nbsp; </p>
- 				  <p><b>Description : &nbsp; </b>&nbsp; </p>
+ 				  <p><b>Description : &nbsp; </b>{{rec.Description}}&nbsp; </p>
  				</div>
  			</div>
  		</div>
@@ -97,10 +108,13 @@
        var app = angular.module('myApp', []);
        app.controller('dealCtrl', function($scope, $http) {
          $http.get("include/multideal.php").then(function (response) {
-           $scope.names = response.data;
-           console.log($scope.names);
+          $scope.sub = response.data;
          });
-       });
+         $http.get("include/multidealrow.php").then(function (response) {
+          $scope.names = response.data;
+         });
+         }
+       );
      </script>
  </body>
  </html>

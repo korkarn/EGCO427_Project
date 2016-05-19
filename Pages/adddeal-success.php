@@ -1,8 +1,8 @@
 <?php
-  	session_start();
-  	$_SESSION["admin"] = 1;
-  	require_once('include/config.php');
-      $mysqli = connectDB();
+	session_start();
+	$_SESSION["admin"] = 1;
+	require_once('include/config.php');
+  $mysqli = connectDB();
  	$sql = "SELECT * FROM deal WHERE id = '".$_SESSION["class_id"]."'";
  	$result = mysqli_query($mysqli, $sql);
  	$row = mysqli_fetch_assoc($result)
