@@ -9,6 +9,13 @@
 	font-weight: bold;
 	font-size: 100px;
 }
+.navbar-default .container .jumbotron > center > h4 {
+	margin-top: -25px;
+	font-color: #ffff9d;
+	font-family: "Architects Daughter";
+	font-weight: bold;
+	font-size: 100px;
+}
 .btn-default{
 	background-color: #BEEB9F;
 	color: #FF6138;

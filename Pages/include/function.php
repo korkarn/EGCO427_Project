@@ -1,88 +1,119 @@
 <?php
+if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
+
 	require_once('config.php');
+	//get users id
 	function getProfile($id,$mysqli)
 	{
-		$sql = "SELECT * FROM users WHERE id = '$id'";
+		$sql = "SELECT * FROM users WHERE id = '".$_SESSION['user_id']."'";
 		$result = $mysqli->query($sql);
 		$row = $result->fetch_array(MYSQLI_ASSOC);
 		return $row;
 	}
 
-	function getNextProfile($mysqli,$id)
-	{
-		$sql = "SELECT * FROM users WHERE id = (SELECT min(id) FROM users WHERE id > $id)";
-		$result = $mysqli->query($sql);
-		$row = $result->fetch_array(MYSQLI_ASSOC);
-		$number = $row['id'];
-		return $number;
-	}
-
-	function getPrevProfile($mysqli,$id)
-	{
-		$sql = "SELECT * FROM users WHERE id = (SELECT max(id) FROM users WHERE id < $id)";
-		$result = $mysqli->query($sql);
-		$row = $result->fetch_array(MYSQLI_ASSOC);
-		$number = $row['id'];
-		return $number;
-	}
-
-	function updateProfile($id,$email,$tel,$address,$mysqli)
+	//update profile after edit profile
+	function updateProfile($id,$username,$email,$tel,$address,$mysqli)
 	{
 		$id = $mysqli->real_escape_string($id);
+		$username = $mysqli->real_escape_string($username);
 		$email = $mysqli->real_escape_string($email);
 		$tel = $mysqli->real_escape_string($tel);
 		$address = $mysqli->real_escape_string($address);
 
-		$sql = "UPDATE users SET email='$email',tel='$tel',address='$address' WHERE id = '$id'";
+		$sql = "UPDATE users SET username='$username',email='$email',tel='$tel',address='$address' WHERE id = '$id'";
 		$result = $mysqli->query($sql);
-
 	}
 
+	//upload(edit) profile picture
+	function upload($id, $pic, $mysqli)
+    {
+        $path = $mysqli->real_escape_string($path);
+
+        $sql = "UPDATE `users` SET `pic` = '$pic' WHERE `id` = $id";
+        $result = $mysqli->query($sql);
+        return $result; // returns true or false
+    } 
+
+    //get deals id
 	function getDeal($id,$mysqli)
-	{
-		$sql = "SELECT * FROM deal WHERE class_id = 1 ORDER BY date_start DESC";
-		$result = $mysqli->query($sql);
-		$row = $result->fetch_array(MYSQLI_ASSOC);
-		while ($res = $result->fetch_array(MYSQLI_ASSOC))
-        {
-            $row =$res;
-        }
-        return $row;
+	{	
+		$day_comp = date("Y-m-d");
+		$sql_dateStart = "SELECT * FROM deal WHERE (date_start < '$day_comp' AND date_end >= '$day_comp') AND class_id = $id ORDER BY date_start DESC";
+		$result= mysqli_query($mysqli, $sql_dateStart) or die("Data not found.");
+	 	$row = $result->fetch_array(MYSQLI_ASSOC);
+	 	$pic = $row['pic1'];
+
+	 	return $pic;
 	}
 
-	function getDeal1($id,$mysqli)
+	//add comments
+	function addcomment($comment,$users_id,$id,$mysqli)
 	{
-		$sql = "SELECT * FROM deal WHERE class_id = 6 ORDER BY date_start DESC";
-		$result = $mysqli->query($sql);
-		$row = $result->fetch_array(MYSQLI_ASSOC);
-		while ($res = $result->fetch_array(MYSQLI_ASSOC))
-        {
-            $row1 =$res;
-        }
-        return $row1;
-	 }
+		$comment = $mysqli->real_escape_string($comment);
+		$users_id = $mysqli->real_escape_string($users_id);
+		$id = $mysqli->real_escape_string($id);
+		$date = date("Y-m-d");
 
-	function getDeal2($id,$mysqli)
-	{
-		$sql = "SELECT * FROM deal WHERE class_id = 7 ORDER BY date_start DESC";
+		$sql = "INSERT INTO rating_comment (comment,users_id,date,deal_id) VALUES ('$comment',$users_id,'$date',$id)";
 		$result = $mysqli->query($sql);
-		$row = $result->fetch_array(MYSQLI_ASSOC);
-		while ($res = $result->fetch_array(MYSQLI_ASSOC))
-        {
-            $row2 =$res;
-        }
-        return $row2;
+		return $result;
 	}
 
-	function getDeal3($id,$mysqli)
+	//add points after comments
+	function addpointment($a,$mysqli)
 	{
-		$sql = "SELECT * FROM deal WHERE class_id = 11 ORDER BY date_start DESC";
+		$points = $a + 5;
+
+		$sql = "UPDATE users SET points = $points WHERE id = '".$_SESSION['user_id']."'";
 		$result = $mysqli->query($sql);
-		$row = $result->fetch_array(MYSQLI_ASSOC);
-		while ($res = $result->fetch_array(MYSQLI_ASSOC))
-        {
-            $row3 =$res;
-        }
-        return $row3;
+		return $result;
+	}
+
+	//add like after click like button
+	function addlike($like,$users_id,$id,$mysqli)
+	{
+		$like = $mysqli->real_escape_string($like);
+		$users_id = $mysqli->real_escape_string($users_id);
+		$id = $mysqli->real_escape_string($id);
+		$date = date("Y-m-d");
+
+		$sql = "INSERT INTO rating_like (like_num,users_id,date,deal_id) VALUES ($like,$users_id,'$date',$id)";
+		$result = $mysqli->query($sql);
+		return $result;
+	}
+
+	//add points after click like button
+	function addpointlike($a,$mysqli)
+	{
+		$points = $a + 2;
+
+		$sql = "UPDATE users SET points = $points WHERE id = '".$_SESSION['user_id']."'";
+		$result = $mysqli->query($sql);
+		return $result;
+	}
+
+	//add history from buy deal
+	function buydeal($id,$users_id,$a,$b,$mysqli)
+	{
+		$id = $mysqli->real_escape_string($id);
+		$users_id = $mysqli->real_escape_string($users_id);
+		$a = $mysqli->real_escape_string($a);
+		$b = $mysqli->real_escape_string($b);
+		$date = date("Y-m-d");
+
+		$sql = "INSERT INTO history (users_id,deal_id,deal_name,date,deal_points) VALUES ($users_id,$id,'$b','$date',$a)";
+		$result = $mysqli->query($sql);
+		return $result;
+	}
+
+	//update points after buy deal
+	function reducepoints($points,$mysqli)
+	{
+		$sql = "UPDATE users SET points = $points WHERE id = '".$_SESSION['user_id']."'";
+		$result = $mysqli->query($sql);
+		return $result;
 	}
 ?>

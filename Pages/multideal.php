@@ -1,7 +1,7 @@
 <?php
  	session_start();
- 	$_SESSION["admin"] = 1;
-  $_SESSION['name_main'] = $_GET['main'];
+
+ 	$_SESSION['name_main'] = $_GET['main'];
   $_SESSION['name_sub'] = $_GET['sub'];
  ?>
  
@@ -53,11 +53,11 @@
  		        <ul class="nav navbar-nav">
  		            <li><a href="multideal.php?main=<?php echo $_SESSION['name_main'] ?>&sub=<?php echo $_SESSION['name_sub1'] ?>">{{sub[0]}} &nbsp;</a></li>
  		            <li><a href="multideal.php?main=<?php echo $_SESSION['name_main'] ?>&sub=<?php echo $_SESSION['name_sub2'] ?>">{{sub[1]}} &nbsp;</a></li>
- 		            <li><a href="multideal.php?main=<?php echo $_SESSION['name_main'] ?>&sub=<?php echo $_SESSION['name_sub3'] ?>">{{sub[2]}}</a></li>
+ 		            <li><a href="multideal.php?main=<?php echo $_SESSION['name_main'] ?>&sub=<?php echo $_SESSION['name_sub3'] ?>">{{sub[2]}} &nbsp;&nbsp;&nbsp;</a></li>
  		        </ul>
  		        <div class="btn-group">
               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Action <span class="caret"></span>
+                MENU <span class="caret"></span>
               </button>
               <ul class="dropdown-menu">
                 <li><a href="multideal.php?main=FOOD&sub=Dessert">FOOD</a></li>
@@ -66,6 +66,22 @@
                 <li><a href="multideal.php?main=LIFESTYLE&sub=Entertainment">LIFESTYLE</a></li>
               </ul>
             </div>
+
+            <?php if($_SESSION['login'] == true){ ?>
+              <div class="nav navbar-nav-main navbar-right">
+                <div class="btn-group">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <img class="navbar-brand-avatar img-circle" alt="logo" src="../Pages/images/users/<?php echo $_SESSION['user_pic'];?>">
+                    </a>
+                  <ul class="dropdown-menu">
+                    <li><a href="profile.php">Profile</a></li>
+                    <li><a href="history.php">History</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="logout.php">Log out</a></li>
+                  </ul>
+                </div>
+              </div>
+            <?php } ?>
  		    </div>
  	    </div>
  	</nav>
@@ -88,7 +104,7 @@
  		<div class="row bg-deal">
  			<div class="col-md-4 col-sm-8">
  				<a href="singdeal.php?id={{rec.Id}}" class="thumbnail">
- 			     <img src="../images/<?php echo $_SESSION['name_main'] ?>/<?php echo $_SESSION['name_sub'] ?>/{{rec.Pic1}}" alt="deal">
+ 			     <img src="../Images/deal/{{rec.Pic1}}" alt="deal">
             <!-- <img src="../images/logo/logo-small.png" alt="deal"> -->
  			    </a>
  			</div>

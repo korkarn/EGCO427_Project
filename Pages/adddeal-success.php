@@ -1,6 +1,12 @@
 <?php
 	session_start();
-	$_SESSION["admin"] = 1;
+  if($_SESSION['login'] == true){
+      $session_true = true;
+  }
+  else{
+      $session_true = false;
+      header('location: login.php');
+  }
 	require_once('include/config.php');
   $mysqli = connectDB();
  	$sql = "SELECT * FROM deal WHERE id = '".$_SESSION["class_id"]."'";
@@ -61,101 +67,106 @@
  	<div class="container">
   	    <div class="panel-body">
   	        <div class="row">
+                    <!-- show  -->
   	                <form role="form" name="card" method="post">
   	                <div class="col-lg-4">
   	                	<div class="form-group">
   	                        <label>Name deal</label>
-  	                        <input name="name" class="form-control" value="<?php echo $row["name"] ?>">
+  	                        <input name="name" class="form-control" value="<?php echo $row["name"] ?>" readonly="">
  	                    </div>
  	                    <div class="form-group">
  	                        <label>Promotion</label>
- 	                        <input name="promotion" class="form-control" placeholder="Enter promotion" value="<?php echo $row["promotion"] ?>">
+ 	                        <input name="promotion" class="form-control" value="<?php echo $row["promotion"] ?>" readonly="">
  	                    </div>
  	                    <div class="form-group">
  	                        <label>Description</label>
- 	                        <input name="description" class="form-control" placeholder="Enter description" value="<?php echo $row["description"] ?>">
+ 	                        <input name="description" class="form-control" value="<?php echo $row["description"] ?>" readonly="">
  	                    </div>
  	                    <label>New price</label>
  	                    <div class="form-group input-group">
  	                        <span class="input-group-addon">฿</span>
- 	                        <input id="price" name="newprice" type="text" class="form-control" value="<?php echo $row["price_new"] ?>">
+ 	                        <input id="price" name="newprice" type="text" class="form-control" value="<?php echo $row["price_new"] ?>" readonly="">
  	                    </div>
  	                    <label>Old price</label>
  	                    <div class="form-group input-group">
  	                        <span class="input-group-addon">฿</span>
- 	                        <input id="price" name="oldprice" type="text" class="form-control" value="<?php echo $row["price_old"] ?>">
+ 	                        <input id="price" name="oldprice" type="text" class="form-control" value="<?php echo $row["price_old"] ?>" readonly="">
  	                    </div>
  	                    <div class="form-group">
  	                        <label>Address</label>
- 	                        <input name="addr" class="form-control" placeholder="Enter address" value="<?php echo $row["address"] ?>">
+ 	                        <input name="addr" class="form-control" value="<?php echo $row["address"] ?>" readonly="">
  	                    </div>
  	                    <div class="form-group">
  	                        <label>Telephone</label>
- 	                        <input name="tel" class="form-control" placeholder="Enter tel." value="<?php echo $row["tel"] ?>">
+ 	                        <input name="tel" class="form-control" value="<?php echo $row["tel"] ?>" readonly="">
  	                    </div>
  	                    <div class="form-group">
  	                        <label>Website</label>
- 	                        <input name="web" class="form-control" placeholder="Enter web" value="<?php echo $row["website"] ?>">
+ 	                        <input name="web" class="form-control" value="<?php echo $row["website"] ?>" readonly="">
  	                    </div>
  	                    <div class="form-group">
  	                        <label>Latitude</label>
- 	                        <input name="lat" class="form-control" placeholder="Enter latitude" value="<?php echo $row["latitude"] ?>">
+ 	                        <input name="lat" class="form-control" value="<?php echo $row["latitude"] ?>" readonly="">
  	                    </div>
  	                    <div class="form-group">
  	                        <label>Longitude</label>
- 	                        <input name="log" class="form-control" placeholder="Enter longitude" value="<?php echo $row["longitude"] ?>">
+ 	                        <input name="log" class="form-control" value="<?php echo $row["longitude"] ?>" readonly="">
  	                    </div>
  	                    <label>Points</label>
  	                    <div class="form-group input-group">
- 	                        <input id="price" name="point" type="text" class="form-control" value="<?php echo $row["points"] ?>">
+ 	                        <input id="price" name="point" type="text" class="form-control" value="<?php echo $row["points"] ?>" readonly="">
  	                        <span class="input-group-addon">points</span>
  	                    </div>
  	                    <div class="form-group">
  	                        <label>Date start</label>
- 	                        <input name="datestart" type="date" class="form-control" placeholder="Enter Date" value="<?php echo $row["date_start"] ?>">
+ 	                        <input name="datestart" type="date" class="form-control" value="<?php echo $row["date_start"] ?>" readonly="">
  	                    </div>
  	                    <div class="form-group">
  	                        <label>Date end</label>
- 	                        <input name="dateend" type="date" class="form-control" placeholder="Enter Date" value="<?php echo $row["date_end"] ?>">
+ 	                        <input name="dateend" type="date" class="form-control" value="<?php echo $row["date_end"] ?>" readonly="">
  	                    </div>
  	                    <div class="form-group">
  	                        <label>Class</label>
- 	                        <input name="class" class="form-control" placeholder="Enter longitude" value="<?php echo $_SESSION["name_main"] ?>">
+ 	                        <input name="class" class="form-control" value="<?php echo $_SESSION["name_main"] ?>" readonly="">
   	                    </div>
                       </div>
                       
                       <div class="col-lg-4">
   	                    <div class="form-group">
   	                    	<label>Pic No. 1</label>
-  						    <input type="image" type="submit" src="../images/<?php echo $_SESSION["name_main"] ?>/<?php echo $_SESSION["name_sub"] ?>/<?php echo $row["pic1"] ?>" alt="save" width="200" height="200">
- 						</div>
- 						<div class="form-group">
- 	                    	<label>Pic No. 2</label>
- 						    <input type="image" type="submit" src="../images/<?php echo $_SESSION["name_main"] ?>/<?php echo $_SESSION["name_sub"] ?>/<?php echo $row["pic2"] ?>" alt="save" width="200" height="200">
- 						</div>
- 						<div class="form-group">
+  						              <input type="image" type="submit" src="../Images/deal/<?php echo $row["pic1"] ?>" alt="save" width="200" height="200">
+ 						             </div>
+                      <?php if($row["pic2"] != ""){ ?>
+ 						             <div class="form-group">
+ 	                    	   <label>Pic No. 2</label>
+ 						               <input type="image" type="submit" src="../Images/deal/<?php echo $row["pic2"] ?>" alt="save" width="200" height="200">
+ 						             </div>
+                      <?php } ?>
+                      <?php if($row["pic3"] != ""){ ?>
+ 						             <div class="form-group">
   	                    	<label>Pic No. 3</label>
-  						    <input type="image" type="submit" src="../images/<?php echo $_SESSION["name_main"] ?>/<?php echo $_SESSION["name_sub"] ?>/<?php echo $row["pic3"] ?>" alt="save" width="200" height="200">
-  						</div>
- 					</div>
+  						              <input type="image" type="submit" src="../Images/deal/<?php echo $row["pic3"] ?>" alt="save" width="200" height="200">
+  						          </div>
+                      <?php } ?>
+ 					            </div>
  
- 					<div class="col-lg-4">
- 					<?php if($row["pic4"] != ""){ ?>
-  						<div class="form-group">
+ 					            <div class="col-lg-4">
+ 					            <?php if($row["pic4"] != ""){ ?>
+  						          <div class="form-group">
   	                    	<label>Pic No. 4</label>
-  						    <input type="image" type="submit" src="../images/<?php echo $_SESSION["name_main"] ?>/<?php echo $_SESSION["name_sub"] ?>/<?php echo $row["pic4"] ?>" alt="save" width="200" height="200">
-  						</div>
- 					<?php } ?>
- 					<?php if($row["pic5"] != ""){ ?>
-  						<div class="form-group">
+  						              <input type="image" type="submit" src="../Images/deal/<?php echo $row["pic4"] ?>" alt="save" width="200" height="200">
+  						          </div>
+ 					            <?php } ?>
+ 					            <?php if($row["pic5"] != ""){ ?>
+  						          <div class="form-group">
   	                    	<label>Pic No. 5</label>
-  						    <input type="image" type="submit" src="../images/<?php echo $_SESSION["name_main"] ?>/<?php echo $_SESSION["name_sub"] ?>/<?php echo $row["pic5"] ?>" alt="save" width="200" height="200">
-  						</div>
- 					<?php } ?>
-  					</div>
+  						              <input type="image" type="submit" src="../Images/deal/<?php echo $row["pic5"] ?>" alt="save" width="200" height="200">
+  						          </div>
+ 					            <?php } ?>
+  					          </div>
                   </form>
-  	            </div><!-- /.col-lg-6 (nested) -->
- 	    </div>
+  	         </div><!-- /.col-lg-6 (nested) -->
+ 	      </div>
      </div>
      	
  	<script>

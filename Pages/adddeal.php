@@ -1,6 +1,12 @@
 <?php
  	session_start();
- 	$_SESSION["admin"] = 1;
+  if($_SESSION['login'] == true){
+      $session_true = true;
+  }
+  else{
+      $session_true = false;
+      header('location: login.php');
+  }
  ?>
  
  <!DOCTYPE html>
@@ -51,40 +57,40 @@
  	                    <label>New price</label>
  	                    <div class="form-group input-group">
  	                        <span class="input-group-addon">฿</span>
- 	                        <input id="price" name="newprice" type="text" class="form-control" value="">
+ 	                        <input id="price" name="newprice" type="number" min="0" pattern="[0-9]" title="aaaaaa" class="form-control" value="">
  	                        <span class="input-group-addon">.00</span>
  	                    </div>
  	                    <label>Old price</label>
  	                    <div class="form-group input-group">
  	                        <span class="input-group-addon">฿</span>
- 	                        <input id="price" name="oldprice" type="text" class="form-control" value="">
+ 	                        <input id="price" name="oldprice" type="number" min="0" pattern="[0-9]" class="form-control" value="">
  	                        <span class="input-group-addon">.00</span>
  	                    </div>
  	                    <div class="form-group">
  	                        <label>Address</label>
- 	                        <input name="addr" class="form-control" placeholder="Enter address" value="">
+ 	                        <input name="addr" class="form-control" type="text" placeholder="Enter address" value="">
  	                    </div>
  	                    <div class="form-group">
  	                        <label>Telephone</label>
- 	                        <input name="tel" class="form-control" placeholder="Enter tel." value="">
+ 	                        <input name="tel" class="form-control" type="number" min="0" pattern="^0" placeholder="Enter tel." value="">
  	                    </div>
  	                    <div class="form-group">
  	                        <label>Website</label>
- 	                        <input name="web" class="form-control" placeholder="Enter web" value="">
+ 	                        <input name="web" class="form-control" type="url" placeholder="Enter web" value="">
  	                    </div>
  	                    <div class="form-group">
  	                        <label>Latitude</label>
- 	                        <input name="lat" class="form-control" placeholder="Enter latitude" value="">
+ 	                        <input name="lat" class="form-control" type="number" step="any" placeholder="Enter latitude" value="">
  	                    </div>
  	                    <div class="form-group">
  	                        <label>Longitude</label>
- 	                        <input name="log" class="form-control" placeholder="Enter longitude" value="">
+ 	                        <input name="log" class="form-control" type="number" step="any" placeholder="Enter longitude" value="">
  	                    </div>
                      </div>
  
  					<div class="col-lg-6">
- 	                    <div class="form-group">
- 	                    	<label>Pic No. 1</label>
+            <div class="form-group">
+            	<label>Pic No. 1</label>
  						    <input type="file" name="img[]" class="file">
  						    <div class="input-group col-xs-12">
  						      <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
@@ -95,7 +101,7 @@
  						    </div>
  						</div>
  						<div class="form-group">
- 	                    	<label>Pic No. 2</label>
+            	<label>Pic No. 2</label>
  						    <input type="file" name="img[]" class="file">
  						    <div class="input-group col-xs-12">
  						      <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
@@ -106,7 +112,7 @@
  						    </div>
  						</div>
  						<div class="form-group">
- 	                    	<label>Pic No. 3</label>
+            	<label>Pic No. 3</label>
  						    <input type="file" name="img[]" class="file">
  						    <div class="input-group col-xs-12">
  						      <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
@@ -117,7 +123,7 @@
  						    </div>
  						</div>
  						<div class="form-group">
- 	                    	<label>Pic No. 4</label>
+            	<label>Pic No. 4</label>
  						    <input type="file" name="img[]" class="file">
  						    <div class="input-group col-xs-12">
  						      <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
@@ -128,7 +134,7 @@
  						    </div>
  						</div>
  						<div class="form-group">
- 	                    	<label>Pic No. 5</label>
+            	<label>Pic No. 5</label>
  						    <input type="file" name="img[]" class="file">
  						    <div class="input-group col-xs-12">
  						      <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
@@ -139,41 +145,41 @@
  						    </div>
  						</div>
  						<label>Points</label>
- 	                    <div class="form-group input-group">
- 	                        <input id="price" name="point" type="text" class="form-control" value="">
- 	                        <span class="input-group-addon">points</span>
- 	                    </div>
- 	                    <div class="form-group">
- 	                        <label>Date start</label>
- 	                        <input name="datestart" type="date" class="form-control" placeholder="Enter Date" value="">
- 	                    </div>
- 	                    <div class="form-group">
- 	                        <label>Date end</label>
- 	                        <input name="dateend" type="date" class="form-control" placeholder="Enter Date" value="">
- 	                    </div>
- 	                    <div class="form-group">
- 		                    <label>Class of deal</label>
- 		                    <select name="selectClass" class="selectpicker">
- 							  <optgroup label="FOOD">
- 							    <option value="Dessert">Dessert</option>
- 								<option value="Food">Food</option>
- 								<option value="Drink">Drink</option>	
- 							  </optgroup>
- 							  <optgroup label="TRAVEL">
- 							    <option value="Transport">Transport</option>
- 								<option value="Tour-package">Tour-package</option>
- 								<option value="Hotel">Hotel</option>	
- 							  </optgroup>
- 							  <optgroup label="BEAUTY">
- 							    <option value="Makeup">Makeup</option>
- 								<option value="Fashion">Fashion</option>
- 								<option value="Beauty-clinic">Beauty-clinic</option>	
- 							  </optgroup>
- 							  <optgroup label="LIFTSTYLE">
- 							    <option value="Entertainment">Entertainment</option>
- 								<option value="Sport">Sport</option>
- 								<option value="Electronic">Electronic</option>	
- 							  </optgroup>
+              <div class="form-group input-group">
+                  <input id="pount" name="point" type="number" min="0" pattern="[0-9]" class="form-control" value="">
+                  <span class="input-group-addon">points</span>
+              </div>
+              <div class="form-group">
+                  <label>Date start</label>
+                  <input name="datestart" type="date" class="form-control" placeholder="Enter Date" value="">
+              </div>
+              <div class="form-group">
+                  <label>Date end</label>
+                  <input name="dateend" type="date" class="form-control" placeholder="Enter Date" value="">
+              </div>
+              <div class="form-group">
+                <label>Class of deal</label>
+                <select name="selectClass" class="selectpicker">
+   							  <optgroup label="FOOD">
+   							    <option value="Dessert">Dessert</option>
+   								<option value="Food">Food</option>
+   								<option value="Drink">Drink</option>	
+   							  </optgroup>
+   							  <optgroup label="TRAVEL">
+   							    <option value="Transport">Transport</option>
+   								<option value="Tour-package">Tour-package</option>
+   								<option value="Hotel">Hotel</option>	
+   							  </optgroup>
+   							  <optgroup label="BEAUTY">
+   							    <option value="Makeup">Makeup</option>
+   								<option value="Fashion">Fashion</option>
+   								<option value="Beauty-clinic">Beauty-clinic</option>	
+   							  </optgroup>
+   							  <optgroup label="LIFTSTYLE">
+   							    <option value="Entertainment">Entertainment</option>
+   								<option value="Sport">Sport</option>
+   								<option value="Electronic">Electronic</option>	
+   							  </optgroup>
  							</select>
  						</div>
  					</div>
@@ -188,7 +194,7 @@
  	    </div>
       </div>
   
-  	<input type="image" src="../images/logo/cancel-icon.png" alt="save" width="50" height="50" onClick="location.href='multideal.php'">
+  	<input type="image" src="../images/logo/cancel-icon.png" alt="save" width="50" height="50" onClick="location.href='multideal.php?main=BEAUTY&sub=Makeup'">
  	
  	<script>
  		$(document).on('click', '.browse', function(){

@@ -1,7 +1,6 @@
 <?php 
  	session_start();
- 	// $_SESSION['name_main'] = "BEAUTY";
- 	// $_SESSION['name_sub'] = "Makeup";
+ 	
  	$mainName = $_SESSION['name_main'];
  	$subName = $_SESSION['name_sub'];
   	require_once('config.php');

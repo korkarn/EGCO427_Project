@@ -25,7 +25,11 @@
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                     <div>
-                        <center><img src="images/logo-small.png" class="logo"></center><br>
+                        <center>
+                        <a href="main.php">
+                            <img src="images/logo-small.png" class="logo">
+                        </a>                        
+                        </center>
                     </div>
                     <div class="panel-body">
                         <form role="form">
@@ -40,6 +44,7 @@
                                 <!-- Change this to a button or input when using this as a form -->
                                 <!--<a href="index.html" class="btn btn-lg btn-success btn-block">Login</a>-->
                                 <input type="submit" name="submit" id="submit" value="Login" class="btn btn-lg btn-success btn-block loginbtn" ng-click="postForm()"/>
+                                <input type="submit" name="submit" id="submit" value="Sign up !!" class="btn btn-lg btn-info btn-block loginbtn" onclick="location.href='signup.php'"/>
                             </fieldset></center>
                         </form>
                     </div>
@@ -62,7 +67,7 @@
                     .success(function(data, status, headers, config){
                         console.log(data);
                         if(data.trim() === 'correct'){
-                            window.location.href = 'index.php';
+                            window.location.href = 'main.php';
                         }
                         else{
                             $scope.errorMsg = "Login fail";

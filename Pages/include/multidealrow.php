@@ -6,7 +6,7 @@
 
   	$day_comp = date("Y-m-d");
 
-  	$sql = "SELECT * FROM deal WHERE (date_start < '$day_comp' AND date_end > '$day_comp') AND (class_id = (SELECT id FROM class WHERE name_sub = '$subName')) ORDER BY date_start DESC";
+  	$sql = "SELECT * FROM deal WHERE (date_start < '$day_comp' AND date_end >= '$day_comp') AND (class_id = (SELECT id FROM class WHERE name_sub = '$subName')) ORDER BY date_start DESC";
   	$result = mysqli_query($mysqli, $sql);
  	$arr = [];
  	if (mysqli_num_rows($result) > 0) {

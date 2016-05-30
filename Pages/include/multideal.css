@@ -23,3 +23,21 @@
 	font-size: 15px;
 }
 p { word-break: break-all }
+.bg-deal1 {
+	margin-top: 10px;
+	background-color: #79BD8F;
+	padding-top: 15px;
+	margin-bottom: 15px;
+}
+.bg-deal2 {
+	margin-top: 10px;
+	background-color: #D7FAB6;
+	padding-top: 15px;
+	margin-bottom: 15px;
+}
+.bg-deal3 {
+	margin-top: 10px;
+	background-color: #FFFF9D;
+	padding-top: 15px;
+	margin-bottom: 15px;
+}
